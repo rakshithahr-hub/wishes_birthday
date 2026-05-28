@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Birthday Surprise - Rakshitha ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .surprise-container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(2px);
+            border-radius: 60px 60px 80px 80px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .dob-screen {
+            background: white;
+            border-radius: 50px;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+        }
+
+        .dob-screen h2 {
+            font-size: 2rem;
+            color: #c0392b;
+            margin-bottom: 30px;
+        }
+
+        .dob-screen input {
+            padding: 14px 20px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: 2px solid #ffb6c1;
+            outline: none;
+            text-align: center;
+            width: 80%;
+            max-width: 280px;
+        }
+
+        .dob-screen button {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .dob-screen button:hover {
+            background: #e63946;
+            transform: scale(1.05);
+        }
+
+        .error-msg {
+            color: #b91c1c;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .main-surprise {
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.97);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        .hero {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #fff0e6;
+            text-shadow: 3px 3px 0 #b3413b;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            background: #ffeee6cc;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin-top: 10px;
+        }
+
+        /* Cake Section */
+        .cake-section {
+            background: linear-gradient(135deg, #fff0e0, #ffe0cc);
+            border-radius: 50px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .cake-section h3 {
+            font-size: 2rem;
+            color: #c0392b;
+            margin-bottom: 20px;
+        }
+
+        .cake-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cake {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 30px auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cake:hover {
+            transform: scale(1.02);
+        }
+
+        .cake-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cake-middle {
+            position: absolute;
+            bottom: 70px;
+            left: 10%;
+            width: 80%;
+            height: 60px;
+            background: linear-gradient(135deg, #D2691E, #CD853F);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cake-top {
+            position: absolute;
+            bottom: 120px;
+            left: 20%;
+            width: 60%;
+            height: 50px;
+            background: linear-gradient(135deg, #F4A460, #DEB887);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .frosting {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 15px;
+            background: #FFB6C1;
+            border-radius: 10px;
+        }
+
+        .candle {
+            position: absolute;
+            bottom: 165px;
+            width: 8px;
+            height: 30px;
+            background: linear-gradient(90deg, #FF6B6B, #FF4444);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .candle-1 { left: 40%; }
+        .candle-2 { left: 48%; }
+        .candle-3 { left: 56%; }
+
+        .flame {
+            position: absolute;
+            top: -15px;
+            left: -3px;
+            width: 14px;
+            height: 20px;
+            background: radial-gradient(circle, #FFD700, #FF8C00);
+            border-radius: 50%;
+            animation: flicker 0.5s infinite alternate;
+            box-shadow: 0 0 10px #FFA500;
+            cursor: pointer;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.9; }
+        }
+
+        .no-flame {
+            display: none;
+        }
+
+        .cut-cake-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 20px auto;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cut-cake-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+
+        .cut-cake-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .cake-message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #c0392b;
+            font-weight: bold;
+            background: rgba(255,255,255,0.8);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 40px;
+        }
+
+        .gift-area {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .gift-box {
+            width: 180px;
+            height: 180px;
+            background: #e74c3c;
+            border-radius: 20px 20px 30px 30px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 15px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+
+        .gift-box:before {
+            content: "🎁";
+            font-size: 5rem;
+        }
+
+        .gift-lid {
+            position: absolute;
+            top: -30px;
+            width: 200px;
+            height: 40px;
+            background: #c0392b;
+            border-radius: 20px;
+            left: -10px;
+            transition: 0.3s;
+        }
+
+        .gift-box.opened .gift-lid {
+            transform: translateY(-70px) rotate(10deg);
+            opacity: 0;
+        }
+
+        .gift-box.opened:before {
+            content: "🎉✨🎂";
+            font-size: 3rem;
+        }
+
+        .gift-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d2f36;
+        }
+
+        .gallery {
+            background: rgba(255,240,230,0.7);
+            border-radius: 45px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #a51c30;
+        }
+
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .photo-grid img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 30px;
+            border: 4px solid white;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .big-love-letter {
+            background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+            padding: 40px 30px;
+            border-radius: 60px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 3px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .big-love-letter::before {
+            content: "💕";
+            font-size: 100px;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.2;
+            transform: rotate(-15deg);
+        }
+
+        .big-love-letter::after {
+            content: "💖";
+            font-size: 80px;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
+        .big-love-letter h2 {
+            text-align: center;
+            color: #c0392b;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+        }
+
+        .big-love-letter .letter-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #2c3e50;
+            text-align: justify;
+            font-family: 'Georgia', serif;
+        }
+
+        .big-love-letter .letter-content p {
+            margin-bottom: 20px;
+        }
+
+        .big-love-letter .signature {
+            text-align: right;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 30px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .love-letter {
+            background: #fffaf2;
+            padding: 20px;
+            border-radius: 40px;
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Music Section */
+        .music-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .music-section h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .music-control {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .music-control button {
+            background: white;
+            color: #764ba2;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .music-control button:hover {
+            transform: scale(1.05);
+            background: #ffd700;
+            color: #333;
+        }
+
+        .song-info {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* Add Photo Button */
+        .add-photo-btn {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #c0392b;
+            border: 2px solid #c0392b;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .add-photo-btn:hover {
+            background: #c0392b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .question-card {
+            background: rgba(255,215,215,0.9);
+            border-radius: 50px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
+            min-height: 220px;
+        }
+
+        .question-card p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-yes, .btn-no {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            margin: 0 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-yes {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background-color: #e67e22;
+            color: white;
+            position: relative;
+        }
+
+        .extra-questions {
+            margin-top: 20px;
+            display: none;
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 30px;
+        }
+
+        .final-surprise {
+            background: linear-gradient(135deg, gold, #ffd700);
+            padding: 15px;
+            border-radius: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            display: none;
+            animation: bounce 0.5s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #3a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .photo-grid img { width: 100px; height: 100px; }
+            .big-love-letter .letter-content { font-size: 1rem; }
+            .big-love-letter h2 { font-size: 1.8rem; }
+            .cake { width: 250px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+<div class="surprise-container" id="appContainer">
+    <!-- DOB SCREEN -->
+    <div id="dobScreen" class="dob-screen">
+        <h2>🎂 Enter Date of Birth 🎂</h2>
+        <input type="date" id="birthdateInput">
+        <br>
+        <button id="unlockBtn">Continue ✨</button>
+        <div id="dobError" class="error-msg"></div>
+    </div>
+
+    <!-- MAIN SURPRISE CONTENT -->
+    <div id="mainSurprise" class="main-surprise">
+        <div class="hero">
+            <h1>Happy Birthday, My Love ❤️</h1>
+            <p>✨ Every day with you is a celebration ✨</p>
+        </div>
+
+        <!-- Music Section -->
+        <div class="music-section">
+            <h3>🎵 Kanasalu Nooru Baari 🎵</h3>
+            <div class="music-control">
+                <button id="playMusicBtn">▶️ Play Song</button>
+                <button id="pauseMusicBtn">⏸️ Pause</button>
+                <button id="volumeUpBtn">🔊 Volume +</button>
+                <button id="volumeDownBtn">🔉 Volume -</button>
+            </div>
+            <div class="song-info">
+                ♪ Kanasalu Nooru Baari - Mungaru Male 2 | Shreya Ghoshal | Ganesh ♪
+            </div>
+        </div>
+
+        <!-- Audio Player - Fixed file extension -->
+        <audio id="bgAudio" preload="auto" style="display: none;">
+            <source src="song.mp3.mpeg" type="audio/mpeg">
+        </audio>
+
+        <!-- CAKE CUTTING SECTION -->
+        <div class="cake-section">
+            <h3>🎂 Let's Cut the Cake! 🎂</h3>
+            <div class="cake-container">
+                <div class="cake" id="cake">
+                    <div class="cake-bottom">
+                        <div class="frosting"></div>
+                    </div>
+                    <div class="cake-middle">
+                        <div class="frosting"></div>
+                    </div>
+                    <div class="cake-top">
+                        <div class="frosting"></div>
+                    </div>
+                    
+                    <div class="candle candle-1" id="candle1">
+                        <div class="flame" id="flame1"></div>
+                    </div>
+                    <div class="candle candle-2" id="candle2">
+                        <div class="flame" id="flame2"></div>
+                    </div>
+                    <div class="candle candle-3" id="candle3">
+                        <div class="flame" id="flame3"></div>
+                    </div>
+                </div>
+                
+                <button class="cut-cake-btn" id="cutCakeBtn">🔪 Cut the Cake 🔪</button>
+                <div id="cakeMessage" class="cake-message"></div>
+            </div>
+        </div>
+
+        <!-- Gift Box -->
+        <div class="gift-area">
+            <div id="giftBox" class="gift-box">
+                <div class="gift-lid"></div>
+            </div>
+        </div>
+        <div id="giftMsg" class="gift-message"></div>
+
+        <!-- Gallery -->
+        <div class="gallery">
+            <h3>📸 Our Beautiful Moments 📸</h3>
+            <div class="photo-grid" id="photoGallery">
+                <img src="images/1.jpeg" alt="Memory 1" onerror="this.src='https://picsum.photos/id/64/150/150'">
+                <img src="images/2.jpeg" alt="Memory 2" onerror="this.src='https://picsum.photos/id/169/150/150'">
+                <img src="images/3.jpeg" alt="Memory 3" onerror="this.src='https://picsum.photos/id/155/150/150'">
+                <img src="images/4.jpeg" alt="Memory 4" onerror="this.src='https://picsum.photos/id/26/150/150'">
+                <img src="images/5.jpeg" alt="Memory 5" onerror="this.src='https://picsum.photos/id/28/150/150'">
+                <img src="images/6.jfif" alt="Memory 6" onerror="this.src='https://picsum.photos/id/30/150/150'">
+                <img src="images/7.jfif" alt="Memory 7" onerror="this.src='https://picsum.photos/id/32/150/150'">
+                <img src="images/8.jpeg" alt="Memory 4" onerror="this.src='https://picsum.photos/id/26/150/150'">
+                <img src="images/9.jpeg" alt="Memory 4" onerror="this.src='https://picsum.photos/id/26/150/150'">
+                <img src="images/10.jpeg" alt="Memory 4" onerror="this.src='https://picsum.photos/id/26/150/150'">
+                <img src="images/11.jpeg" alt="Memory 4" onerror="this.src='https://picsum.photos/id/26/150/150'">
+            </div>
+            <p style="text-align:center; margin-top:12px;"><i>💕 Click any photo to enlarge 💕</i></p>
+            <div style="text-align:center;">
+                <button class="add-photo-btn" id="addPhotoBtn">📷 Add More Photos</button>
+            </div>
+        </div>
+
+        <!-- BIG LOVE LETTER -->
+        <div class="big-love-letter">
+            <h2>💌 My Love Letter To You 💌</h2>
+            <div class="letter-content">
+                <p>My dearest love,</p>
+                
+                <p>On your birthday, I want to pour my heart out to you. You are the most beautiful thing that has ever happened to me. Every morning I wake up grateful that you exist, and every night I fall asleep dreaming of our future together.</p>
+                
+                <p>Your smile lights up my darkest days. Your voice is my favorite sound. Your love has transformed my world into something magical. I never knew what true happiness felt like until you came into my life.</p>
+                
+                <p>With you, every moment feels special. The way you laugh, the way you care, the way you love me - everything about you is perfect. You are not just my boyfriend; you are my best friend, my soulmate, and my home.</p>
+                
+                <p>I promise to stand by your side through every storm and every sunshine. I promise to love you on your good days and your tough days. I promise to be your biggest supporter, your strongest cheerleader, and your forever safe place.</p>
+                
+                <p>Thank you for being exactly who you are. Thank you for choosing me. Thank you for every hug, every kiss, every late night conversation, and every beautiful memory we've created together.</p>
+                
+                <p>You are my today and all of my tomorrows. No matter what life brings, I want to face it all with you. My heart beats only for you, and it will forever be yours.</p>
+                
+                <p>Happy Birthday, my love! May your life be filled with endless joy, success, and all the happiness you deserve. You mean the world to me, and I will spend every day showing you how much I love you.</p>
+            </div>
+            <div class="signature">
+                Forever yours,<br>Rakshitha H R ❤️
+            </div>
+        </div>
+
+        <!-- Short Love Letter -->
+        <div class="love-letter">
+            <h3 style="color:#b22234;">💖 You Are My Everything 💖</h3>
+            <p>My love, you are the reason I believe in forever. Every day with you is a gift, and I cherish every single moment. Thank you for being my rock, my joy, and my greatest adventure. I love you more than words could ever express. You are my heart, my soul, and my forever.</p>
+            <p style="text-align:center; font-size:1.2rem;">🎂 Happy Birthday to the love of my life! 🎂</p>
+            <p style="text-align:right;">- Always and forever, <strong>Rakshitha H R</strong> ❤️</p>
+        </div>
+
+        <!-- Interactive Questions -->
+        <div class="question-card" id="questionCard">
+            <p>💖 Do you love me? 💖</p>
+            <button class="btn-yes" id="yesBtn">YES ❤️</button>
+            <button class="btn-no" id="noBtn">NO 😢</button>
+            <div id="extraQuestions" class="extra-questions">
+                <p id="dynamicQuestion">Do I make you happy every day? 🥰</p>
+                <button id="extraYes" class="btn-yes">YES</button>
+                <button id="extraNo" style="background:#ff8c00; padding:12px 25px; border-radius:50px; border:none; cursor:pointer;">NO (floating!)</button>
+                <div id="finalMessage" class="final-surprise"></div>
+            </div>
+        </div>
+        
+        <footer>✨ Made with all my love - Rakshitha H R ✨</footer>
+    </div>
+</div>
+
+<script>
+    // Global audio element reference
+    let audioElement = document.getElementById('bgAudio');
+    
+    // DOB Logic - June 12, 2000
+    const dobScreen = document.getElementById('dobScreen');
+    const mainSurprise = document.getElementById('mainSurprise');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const birthdateInput = document.getElementById('birthdateInput');
+    const dobError = document.getElementById('dobError');
+
+    function isCorrectBirthday(enteredDate) {
+        if (!enteredDate) return false;
+        const dateObj = new Date(enteredDate);
+        const targetDate = new Date(2000, 5, 12);
+        
+        return dateObj.getFullYear() === targetDate.getFullYear() &&
+               dateObj.getMonth() === targetDate.getMonth() &&
+               dateObj.getDate() === targetDate.getDate();
+    }
+
+    unlockBtn.addEventListener('click', () => {
+        const dateValue = birthdateInput.value;
+        
+        if (!dateValue) {
+            dobError.innerText = "❌ Invalid date. Please try again.";
+            return;
+        }
+        
+        if (isCorrectBirthday(dateValue)) {
+            dobScreen.style.display = 'none';
+            mainSurprise.style.display = 'block';
+            dobError.innerText = "";
+            
+            initGiftBox();
+            initLoveQuestions();
+            initPhotoGallery();
+            initCakeCutting();
+            createConfetti();
+            
+            // Initialize audio
+            if (audioElement) {
+                audioElement.volume = 0.5;
+                audioElement.play().catch(e => console.log("Click play button for song"));
+            }
+        } else {
+            dobError.innerText = "❌ Invalid date. Please try again.";
+            birthdateInput.value = "";
+        }
+    });
+    
+    // Add Photo Functionality
+    document.getElementById('addPhotoBtn')?.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.alt = "Memory";
+                    document.querySelector('.photo-grid').appendChild(img);
+                    
+                    img.addEventListener('click', () => {
+                        const overlay = document.createElement('div');
+                        overlay.style.position = 'fixed';
+                        overlay.style.top = '0';
+                        overlay.style.left = '0';
+                        overlay.style.width = '100%';
+                        overlay.style.height = '100%';
+                        overlay.style.background = 'rgba(0,0,0,0.9)';
+                        overlay.style.zIndex = '10000';
+                        overlay.style.display = 'flex';
+                        overlay.style.alignItems = 'center';
+                        overlay.style.justifyContent = 'center';
+                        overlay.style.cursor = 'pointer';
+                        
+                        const enlargedImg = document.createElement('img');
+                        enlargedImg.src = event.target.result;
+                        enlargedImg.style.maxWidth = '90%';
+                        enlargedImg.style.maxHeight = '90%';
+                        enlargedImg.style.borderRadius = '20px';
+                        enlargedImg.style.border = '5px solid white';
+                        
+                        overlay.appendChild(enlargedImg);
+                        document.body.appendChild(overlay);
+                        overlay.addEventListener('click', () => overlay.remove());
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+        input.click();
+    });
+    
+    // CAKE CUTTING FUNCTION
+    let candlesLitCount = 0;
+    let cakeCut = false;
+    
+    function initCakeCutting() {
+        const candle1 = document.getElementById('candle1');
+        const candle2 = document.getElementById('candle2');
+        const candle3 = document.getElementById('candle3');
+        const cutBtn = document.getElementById('cutCakeBtn');
+        const cakeMessage = document.getElementById('cakeMessage');
+        
+        const lightCandle = (candleElement, flameId) => {
+            const flame = document.getElementById(flameId);
+            if (flame && flame.classList.contains('no-flame')) {
+                flame.classList.remove('no-flame');
+                candlesLitCount++;
+                createSparkles();
+                cakeMessage.innerHTML = `🕯️ ${candlesLitCount}/3 candles lit! Make a wish! 🕯️`;
+                setTimeout(() => {
+                    if (cakeMessage.innerHTML.includes("candles lit")) {
+                        cakeMessage.innerHTML = "";
+                    }
+                }, 2000);
+            }
+        };
+        
+        document.getElementById('flame1').classList.add('no-flame');
+        document.getElementById('flame2').classList.add('no-flame');
+        document.getElementById('flame3').classList.add('no-flame');
+        candlesLitCount = 0;
+        
+        candle1.addEventListener('click', () => lightCandle(candle1, 'flame1'));
+        candle2.addEventListener('click', () => lightCandle(candle2, 'flame2'));
+        candle3.addEventListener('click', () => lightCandle(candle3, 'flame3'));
+        
+        cutBtn.addEventListener('click', () => {
+            if (!cakeCut) {
+                if (candlesLitCount < 3) {
+                    cakeMessage.innerHTML = `🎂 Light all ${3 - candlesLitCount} more candle(s) first! Click on each candle to light them! 🎂`;
+                    return;
+                }
+                
+                cakeCut = true;
+                cutBtn.disabled = true;
+                cutBtn.innerHTML = "🎉 Cake Cut! 🎉";
+                cakeMessage.innerHTML = "🎂💖 YAY! You cut the cake! Now make a wish and celebrate! 💖🎂";
+                
+                setTimeout(() => {
+                    document.getElementById('flame1').classList.add('no-flame');
+                    document.getElementById('flame2').classList.add('no-flame');
+                    document.getElementById('flame3').classList.add('no-flame');
+                    cakeMessage.innerHTML += " 🕯️✨ You blew out the candles! ✨🕯️";
+                }, 1000);
+                
+                for(let i = 0; i < 3; i++) createConfetti();
+                
+                setTimeout(() => {
+                    cakeMessage.innerHTML = "💕 Now share this sweet moment with me, your Rakshitha! I love you! 💕";
+                }, 3000);
+            }
+        });
+    }
+    
+    function createSparkles() {
+        for(let i = 0; i < 20; i++) {
+            let sparkle = document.createElement('div');
+            sparkle.innerText = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * window.innerWidth + 'px';
+            sparkle.style.top = Math.random() * window.innerHeight + 'px';
+            sparkle.style.fontSize = (15 + Math.random() * 20) + 'px';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'fadeOut 1s ease-out forwards';
+            document.body.appendChild(sparkle);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeOut {
+                    0% { opacity: 1; transform: scale(1); }
+                    100% { opacity: 0; transform: scale(1.5); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+    }
+    
+    function initGiftBox() {
+        const gift = document.getElementById('giftBox');
+        const giftMsgDiv = document.getElementById('giftMsg');
+        let opened = false;
+        
+        gift.addEventListener('click', () => {
+            if (!opened) {
+                gift.classList.add('opened');
+                giftMsgDiv.innerHTML = "🎁✨ SURPRISE! Wishing you the most amazing birthday! 🎂💖 - Rakshitha ✨🎁";
+                opened = true;
+                createConfetti();
+            } else {
+                giftMsgDiv.innerHTML += " 💝 I love you more each day! 💝";
+            }
+        });
+    }
+
+    function createConfetti() {
+        const emojis = ['🎉','🎊','❤️','✨','🥳','💖','🎂','🎁','💕','🌟','💗','🎈'];
+        for(let i = 0; i < 60; i++) {
+            let conf = document.createElement('div');
+            conf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            conf.style.position = 'fixed';
+            conf.style.left = Math.random() * window.innerWidth + 'px';
+            conf.style.top = '-20px';
+            conf.style.fontSize = (20 + Math.random() * 30) + 'px';
+            conf.style.pointerEvents = 'none';
+            conf.style.zIndex = '9999';
+            document.body.appendChild(conf);
+            
+            let anim = conf.animate([
+                { transform: 'translateY(0px) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], { duration: 1500 + Math.random() * 1000, easing: 'cubic-bezier(0.2, 0.9, 0.4, 1.1)' });
+            
+            anim.onfinish = () => conf.remove();
+        }
+    }
+    
+    function initPhotoGallery() {
+        const images = document.querySelectorAll('.photo-grid img');
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.background = 'rgba(0,0,0,0.9)';
+                overlay.style.zIndex = '10000';
+                overlay.style.display = 'flex';
+                overlay.style.alignItems = 'center';
+                overlay.style.justifyContent = 'center';
+                overlay.style.cursor = 'pointer';
+                
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = img.src;
+                enlargedImg.style.maxWidth = '90%';
+                enlargedImg.style.maxHeight = '90%';
+                enlargedImg.style.borderRadius = '20px';
+                enlargedImg.style.border = '5px solid white';
+                
+                overlay.appendChild(enlargedImg);
+                document.body.appendChild(overlay);
+                
+                overlay.addEventListener('click', () => overlay.remove());
+            });
+        });
+    }
+
+    function initLoveQuestions() {
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const extraDiv = document.getElementById('extraQuestions');
+        const finalMessageDiv = document.getElementById('finalMessage');
+        
+        function makeNoFloat(btnElement) {
+            if (!btnElement) return;
+            btnElement.style.position = 'absolute';
+            btnElement.style.transition = 'all 0.3s ease';
+            const parentCard = document.getElementById('questionCard');
+            
+            const floatInterval = setInterval(() => {
+                if (btnElement && btnElement.parentElement) {
+                    const maxX = parentCard.clientWidth - btnElement.offsetWidth - 20;
+                    const maxY = parentCard.clientHeight - btnElement.offsetHeight - 60;
+                    const newX = Math.max(10, Math.random() * maxX);
+                    const newY = Math.max(10, Math.random() * maxY);
+                    btnElement.style.left = newX + 'px';
+                    btnElement.style.top = newY + 'px';
+                }
+            }, 400);
+            
+            btnElement.addEventListener('click', () => {
+                clearInterval(floatInterval);
+                alert("💗 You can't escape love - Rakshitha! 💗");
+                btnElement.style.position = 'relative';
+                btnElement.style.left = 'auto';
+                btnElement.style.top = 'auto';
+                btnElement.remove();
+                
+                const sweetMsg = document.createElement('div');
+                sweetMsg.innerText = "💗 I knew you'd come around! Now press YES! 💗 - Rakshitha";
+                sweetMsg.style.color = "#c0392b";
+                sweetMsg.style.fontWeight = "bold";
+                sweetMsg.style.marginTop = "10px";
+                sweetMsg.style.padding = "10px";
+                document.getElementById('questionCard').appendChild(sweetMsg);
+                setTimeout(() => sweetMsg.remove(), 2000);
+            });
+        }
+
+        yesBtn.addEventListener('click', () => {
+            extraDiv.style.display = 'block';
+            document.getElementById('dynamicQuestion').innerText = "Do I make you happy every single day? 🥰";
+            createConfetti();
+            
+            const extraYesBtn = document.getElementById('extraYes');
+            const extraNoBtn = document.getElementById('extraNo');
+            
+            const newExtraYes = extraYesBtn.cloneNode(true);
+            const newExtraNo = extraNoBtn.cloneNode(true);
+            extraYesBtn.parentNode.replaceChild(newExtraYes, extraYesBtn);
+            extraNoBtn.parentNode.replaceChild(newExtraNo, extraNoBtn);
+            
+            newExtraYes.addEventListener('click', () => {
+                finalMessageDiv.style.display = 'block';
+                finalMessageDiv.innerHTML = "💞💞💞 YAY! You are my everything! 💞💞💞<br>🎁 I promise to love you forever! Happy Birthday, my soulmate! 🎁<br><br>❤️ I LOVE YOU MORE THAN WORDS CAN SAY! - Rakshitha H R ❤️";
+                createConfetti();
+                
+                for(let i = 0; i < 30; i++) {
+                    const heart = document.createElement('div');
+                    heart.innerText = '❤️';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.bottom = '0px';
+                    heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+                    heart.style.animation = 'floatUp 3s ease-in-out forwards';
+                    heart.style.pointerEvents = 'none';
+                    document.body.appendChild(heart);
+                    
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        @keyframes floatUp {
+                            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }
+                
+                setTimeout(() => {
+                    alert("❤️ YOU ARE MY FOREVER LOVE! HAPPY BIRTHDAY! - Rakshitha ❤️");
+                }, 500);
+            });
+            
+            newExtraNo.addEventListener('click', (e) => {
+                makeNoFloat(newExtraNo);
+                e.preventDefault();
+            });
+        });
+        
+        noBtn.addEventListener('click', () => {
+            makeNoFloat(noBtn);
+            const hintMsg = document.createElement('div');
+            hintMsg.innerText = "😜 You can't say NO to love - Rakshitha! ❤️";
+            hintMsg.style.fontSize = "0.9rem";
+            hintMsg.style.marginTop = "10px";
+            hintMsg.style.color = "#a5260c";
+            hintMsg.style.fontWeight = "bold";
+            hintMsg.style.padding = "5px";
+            document.getElementById('questionCard').appendChild(hintMsg);
+            setTimeout(() => hintMsg.remove(), 3000);
+        });
+    }
+
+    // Music Controls - FIXED: Now using global audioElement
+    const playBtn = document.getElementById('playMusicBtn');
+    const pauseBtn = document.getElementById('pauseMusicBtn');
+    const volumeUpBtn = document.getElementById('volumeUpBtn');
+    const volumeDownBtn = document.getElementById('volumeDownBtn');
+    
+    if (playBtn) {
+        playBtn.addEventListener('click', () => {
+            if (audioElement) {
+                audioElement.play().then(() => {
+                    createConfetti();
+                }).catch(e => {
+                    alert("❤️ Click anywhere on the page first, then play the song! ❤️");
+                });
+            } else {
+                alert("Audio element not found. Please make sure song.mp3 exists!");
+            }
+        });
+    }
+    
+    if (pauseBtn) {
+        pauseBtn.addEventListener('click', () => {
+            if (audioElement) {
+                audioElement.pause();
+                console.log("Song paused");
+            }
+        });
+    }
+    
+    if (volumeUpBtn) {
+        volumeUpBtn.addEventListener('click', () => {
+            if (audioElement) {
+                if (audioElement.volume < 0.9) {
+                    audioElement.volume += 0.1;
+                } else {
+                    audioElement.volume = 1.0;
+                }
+                console.log("Volume:", audioElement.volume);
+            }
+        });
+    }
+    
+    if (volumeDownBtn) {
+        volumeDownBtn.addEventListener('click', () => {
+            if (audioElement) {
+                if (audioElement.volume > 0.1) {
+                    audioElement.volume -= 0.1;
+                } else {
+                    audioElement.volume = 0;
+                }
+                console.log("Volume:", audioElement.volume);
+            }
+        });
+    }
+</script>
+</body>
+</html>
